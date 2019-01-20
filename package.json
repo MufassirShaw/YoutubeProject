@@ -9,8 +9,10 @@
     "axios": "0.18.0",
     "react": "16.5.2",
     "react-dom": "16.5.2",
+    "react-odometerjs": "^2.1.1",
     "react-scripts": "2.0.3",
-    "react-textfit": "^1.1.0"
+    "react-textfit": "^1.1.0",
+    "rxjs": "^6.3.3"
   },
   "devDependencies": {},
   "scripts": {

@@ -5,96 +5,95 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardMedia from "@material-ui/core/CardMedia";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import { Textfit } from 'react-textfit';
 import React from "react";
+import Odometer from "react-odometerjs";
 
-const styles = (theme)=>({
+const styles = theme => ({
   root: {
     // width: "100%"
   },
   cardContentRoot: {
-    padding: "0px 5px",
+    padding: "0px"
   },
   cardMediaRoot: {
     margin: "0 auto",
-    backgroundSize:"100%",
-    width:"100%",
-    marginBottom:"10px",
- 
+    backgroundSize: "100%",
+    width: "30%",
+    marginBottom: "5px",
+    height:"30px",
+   
   },
 
   media: {},
   cardRoot: {
-    margin: "2px",
+    margin: "2px"
   },
-  typoRoot:{
-    fontWeight:"bold",
-    padding:"5px"
+  typoRoot: {
+    display:"block",
+    fontSize:"12px",
+    width:"100%"
+  },
+  itemRoot:{
+    marginBottom:"2px"
   }
 });
 class ChannelCard extends React.Component {
   state = {
     thumbnail: {},
-    title:"",
-    subscribers:""
+    title: "",
+    subscribers: ""
   };
 
-  componentDidMount() {
-    const {id,getData} = this.props;
-    getData(id).then((data)=>{
-      const thumbnail = data.snippet.thumbnails.medium,
-            title = data.snippet.title,
-            subscribers = data.statistics.subscriberCount;
-        this.setState({
-          thumbnail,
-          title,
-          subscribers
-        })
-    })
-  }
   render() {
-    const {classes} = this.props;
+    const { classes,no } = this.props;
+    const { subCount, snippet } = this.props.channel;
     return (
-      <Grid item  md={2} sm={3}  xs={4}>
+      <Grid item md={1} sm={2} xs={3} classes={{
+        item: classes.itemRoot
+      }} >
         <Card
           classes={{
             root: classes.cardRoot
           }}
         >
           <CardActionArea>
-            <CardMedia
-              component="img"
-              alt="Contemplative Reptile"
-              classes={{
-                root: classes.cardMediaRoot
-              }}
-              image={this.state.thumbnail.url!==undefined?this.state.thumbnail.url:"https://placeholder.com/wp-content/uploads/2018/10/placeholder.com-logo1.png"}
-
-            />
+            <Typography
+              component="h5"
+              variant="subtitle1"
+              noWrap={true}
+              align="center"
+              gutterBottom
+            >
+              {snippet.title}
+            </Typography>
+            <Grid
+            container
+            direction="row"
+            justify="space-around"
+            alignItems="center"
+          >
+              <em style={{marginLeft:"10px", fontSize:"18px"}}>{no}</em>
+                <CardMedia
+                  component="div"
+                  alt="Contemplative Reptile"
+                  classes={{
+                    root: classes.cardMediaRoot
+                  }}
+                  image={snippet.thumbnails.default.url}
+                />
+                </Grid>
             <CardContent
               classes={{
                 root: classes.cardContentRoot
               }}
             >
-              <Typography 
-                component="h5"
-                classes={{
-                  root:classes.typoRoot
-                }}
-              >
-
-                  Name :{this.state.title}
-
-              </Typography>
               <Typography
                 classes={{
-                  root:classes.typoRoot
+                  root: classes.typoRoot
                 }}
-                gutterBottom
-                 component="h5"
-                >
-
-                Subscribers : {this.state.subscribers}
+                variant="h5"
+              >
+                <Odometer style={{width:"100%"}} value={subCount} format="(,ddd)" />
               </Typography>
             </CardContent>
           </CardActionArea>
