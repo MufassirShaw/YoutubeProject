@@ -110,7 +110,8 @@ class App extends React.Component {
       "UCZJ7m7EnCNodqnu5SAtg8eQ"
     ],
     APIKey: "AIzaSyBSyBp1KHjjXox6e9FBPoOCE1mbLvVUzUM",
-    res: null
+    res: null,
+    firstTime: true
   };
   // 0 index based   inclusive start and end
   getIds = (start, end) => {
@@ -131,11 +132,19 @@ class App extends React.Component {
         arrayOfChopedIds.push(this.getIds(75, 100));
         const URIs = arrayOfChopedIds.map(subarr => {
           const ids = subarr.toString();
+          if(this.state.firstTime){
           return encodeURI(
             `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${
               this.state.APIKey
             }`
           );
+          }else{
+            return encodeURI(
+              `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ids}&key=${
+                this.state.APIKey
+              }`
+            );
+          }
         });
         const reqs = URIs.map(uri => {
           return axios(uri.toString());
@@ -144,6 +153,7 @@ class App extends React.Component {
           .then(results => {
             let data = [];
             let infoArrs = results.map(item => item.data.items);
+           
             infoArrs.map(item => {
               item.map(subItem => {
                 data.push(subItem);
@@ -156,9 +166,29 @@ class App extends React.Component {
           });
       }),
       map(res => {
-        const unsortedRes = res.map(i => {
-          return { snippet: i.snippet, subCount: i.statistics.subscriberCount };
-        });
+        let unsortedRes = [];
+        if(this.state.firstTime){
+          unsortedRes = res.map(i => {
+            return {id: i.id, snippet: i.snippet, subCount: i.statistics.subscriberCount };
+          });
+          this.setState({firstTime:false})
+          
+        }else{
+          unsortedRes = res.map(i=>{
+            const matchedItem = this.state.res.find((item)=>{
+              return item.id===i.id ? item: false;
+            })  
+
+            const newItem ={
+              id: matchedItem.id,
+              snippet: matchedItem.snippet,
+              subCount: i.statistics.subscriberCount 
+            }
+            return newItem;
+
+          })
+        }
+
         const sortedRes = unsortedRes.sort((a, b) => {
           return b.subCount - a.subCount;
         });
