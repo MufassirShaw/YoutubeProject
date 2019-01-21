@@ -13,10 +13,10 @@ const styles = theme => ({
   }
 })
 const Layout =  (props)=> {
-  const { data, classes } = props;
+  const { data, classes, } = props;
   if (data) {
     const renderedCards = data.map((item, i) => (
-      <ChannelCard key={i} no={i+1} channel={item} />
+      <ChannelCard key={i} no={i+1} channel={item}/>
     ));
     return (
       <Grid container >

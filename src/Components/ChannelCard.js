@@ -48,7 +48,7 @@ class ChannelCard extends React.Component {
     const { classes,no } = this.props;
     const { subCount, snippet } = this.props.channel;
     return (
-      <Grid item md={1} sm={2} xs={3} classes={{
+      <Grid item md={1} sm={2} classes={{
         item: classes.itemRoot
       }} >
         <Card
@@ -93,7 +93,7 @@ class ChannelCard extends React.Component {
                 }}
                 variant="h5"
               >
-                <Odometer style={{width:"100%"}} value={subCount} format="(,ddd)" />
+                <Odometer style={{width:"100%"}} value={subCount} format="(dddd)" />
               </Typography>
             </CardContent>
           </CardActionArea>
@@ -101,6 +101,8 @@ class ChannelCard extends React.Component {
       </Grid>
     );
   }
+    
+
 }
 
 export default withStyles(styles)(ChannelCard);
