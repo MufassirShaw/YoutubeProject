@@ -17,11 +17,9 @@ const styles = theme => ({
   },
   cardMediaRoot: {
     margin: "0 auto",
-    backgroundSize: "100%",
-    width: "30%",
-    marginBottom: "5px",
-    height:"30px",
-   
+    backgroundSize: "cover",
+    width: "100%",
+    height: "100%"
   },
 
   media: {},
@@ -29,12 +27,12 @@ const styles = theme => ({
     margin: "2px"
   },
   typoRoot: {
-    display:"block",
-    fontSize:"12px",
-    width:"100%"
+    display: "block",
+    // fontSize: "12px",
+    width: "100%"
   },
-  itemRoot:{
-    marginBottom:"2px"
+  itemRoot: {
+    marginBottom: "2px"
   }
 });
 class ChannelCard extends React.Component {
@@ -45,34 +43,31 @@ class ChannelCard extends React.Component {
   };
 
   render() {
-    const { classes,no } = this.props;
+    const { classes, no } = this.props;
     const { subCount, snippet } = this.props.channel;
     return (
-      <Grid item md={1} sm={2} classes={{
-        item: classes.itemRoot
-      }} >
+      <Grid
+        item
+        md={2}
+        sm={3}
+        xs={4}
+        classes={{
+          item: classes.itemRoot
+        }}
+      >
         <Card
           classes={{
             root: classes.cardRoot
           }}
         >
           <CardActionArea>
-            <Typography
-              component="h5"
-              variant="subtitle1"
-              noWrap={true}
-              align="center"
-              gutterBottom
-            >
-              {snippet.title}
-            </Typography>
             <Grid
-            container
-            direction="row"
-            justify="space-around"
-            alignItems="center"
-          >
-              <em style={{marginLeft:"10px", fontSize:"18px"}}>{no}</em>
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="stretch"
+            >
+              <Grid item xs={3}>
                 <CardMedia
                   component="div"
                   alt="Contemplative Reptile"
@@ -81,28 +76,51 @@ class ChannelCard extends React.Component {
                   }}
                   image={snippet.thumbnails.default.url}
                 />
-                </Grid>
-            <CardContent
-              classes={{
-                root: classes.cardContentRoot
-              }}
-            >
-              <Typography
-                classes={{
-                  root: classes.typoRoot
-                }}
-                variant="h5"
-              >
-                <Odometer style={{width:"100%"}} value={subCount} format="(dddd)" />
-              </Typography>
-            </CardContent>
+              </Grid>
+
+              <Grid item xs={9}>
+                <Typography
+                  component="h5"
+                  variant="h6"
+                  noWrap={true}
+                  align="center"
+                  gutterBottom
+                  classes={{
+                    root: classes.typoRoot
+                  }}
+                >
+                  <em
+                    style={{
+                      color: "red",
+                      marginRight: "10px",
+                      fontSize: "16px"
+                    }}
+                  >
+                    {no}:
+                  </em>
+                  {snippet.title}
+                </Typography>
+
+                <Typography
+                  classes={{
+                    root: classes.typoRoot
+                  }}
+                  align="center"
+                  variant="h6"
+                >
+                  <Odometer
+                    style={{ width: "100%" }}
+                    value={subCount}
+                    format="(,ddd)"
+                  />
+                </Typography>
+              </Grid>
+            </Grid>
           </CardActionArea>
         </Card>
       </Grid>
     );
   }
-    
-
 }
 
 export default withStyles(styles)(ChannelCard);

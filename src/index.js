@@ -109,7 +109,7 @@ class App extends React.Component {
       "UCYzPXprvl5Y-Sf0g4vX-m6g",
       "UCZJ7m7EnCNodqnu5SAtg8eQ"
     ],
-    APIKey: "AIzaSyBSyBp1KHjjXox6e9FBPoOCE1mbLvVUzUM",
+    APIKey: "AIzaSyCoNxtfPb8mqwyh8s5MA3JYvNILVsDuBBU",
     res: null,
     firstTime: true
   };
@@ -132,13 +132,13 @@ class App extends React.Component {
         arrayOfChopedIds.push(this.getIds(75, 100));
         const URIs = arrayOfChopedIds.map(subarr => {
           const ids = subarr.toString();
-          if(this.state.firstTime){
-          return encodeURI(
-            `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${
-              this.state.APIKey
-            }`
-          );
-          }else{
+          if (this.state.firstTime) {
+            return encodeURI(
+              `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${
+                this.state.APIKey
+              }`
+            );
+          } else {
             return encodeURI(
               `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ids}&key=${
                 this.state.APIKey
@@ -153,9 +153,9 @@ class App extends React.Component {
           .then(results => {
             let data = [];
             let infoArrs = results.map(item => item.data.items);
-           
-            infoArrs.map(item => {
-              item.map(subItem => {
+
+            infoArrs.forEach(item => {
+              item.forEach(subItem => {
                 data.push(subItem);
               });
             });
@@ -167,26 +167,28 @@ class App extends React.Component {
       }),
       map(res => {
         let unsortedRes = [];
-        if(this.state.firstTime){
+        if (this.state.firstTime) {
           unsortedRes = res.map(i => {
-            return {id: i.id, snippet: i.snippet, subCount: i.statistics.subscriberCount };
+            return {
+              id: i.id,
+              snippet: i.snippet,
+              subCount: i.statistics.subscriberCount
+            };
           });
-          this.setState({firstTime:false})
-          
-        }else{
-          unsortedRes = res.map(i=>{
-            const matchedItem = this.state.res.find((item)=>{
-              return item.id===i.id ? item: false;
-            })  
+          this.setState({ firstTime: false });
+        } else {
+          unsortedRes = res.map(i => {
+            const matchedItem = this.state.res.find(item => {
+              return item.id === i.id ? item : false;
+            });
 
-            const newItem ={
+            const newItem = {
               id: matchedItem.id,
               snippet: matchedItem.snippet,
-              subCount: i.statistics.subscriberCount 
-            }
+              subCount: i.statistics.subscriberCount
+            };
             return newItem;
-
-          })
+          });
         }
 
         const sortedRes = unsortedRes.sort((a, b) => {
@@ -195,7 +197,7 @@ class App extends React.Component {
         this.setState({
           res: sortedRes
         });
-     
+
         return sortedRes;
       })
     );
