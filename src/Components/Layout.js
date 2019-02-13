@@ -3,7 +3,7 @@ import ChannelCard from "./ChannelCard";
 import Grid from "@material-ui/core/Grid";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Dialog from "@material-ui/core/Dialog";
-import { withStyles } from "@material-ui/core/styles";
+import {   withStyles     } from "@material-ui/core/styles";
 import DialogContent from "@material-ui/core/DialogContent";
 
 const styles = theme => ({

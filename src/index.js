@@ -109,9 +109,13 @@ class App extends React.Component {
       "UCYzPXprvl5Y-Sf0g4vX-m6g",
       "UCZJ7m7EnCNodqnu5SAtg8eQ"
     ],
-    APIKey: "AIzaSyCoNxtfPb8mqwyh8s5MA3JYvNILVsDuBBU",
-    res: null,
-    firstTime: true
+   res: null,
+    firstTime: true,
+    keys:[
+      "AIzaSyCVPfbZQqM5tRrEapbizuX3Hi_ZZ5JUq5I",
+      "AIzaSyAohUKGFdY7mUO0GYRwdJN6yBXnDbrw0oQ",
+      "AIzaSyAWUmoQVXbXjFkhtOL7XY7hh--5yFThc5s"
+    ]
   };
   // 0 index based   inclusive start and end
   getIds = (start, end) => {
@@ -121,7 +125,11 @@ class App extends React.Component {
     return arr1;
   };
 
+
   fetchDataStream = () => {
+    let keyIndex = 0,
+        {keys} = this.state,
+        key;
     return interval(20000).pipe(
       startWith(0),
       switchMap(() => {
@@ -130,18 +138,26 @@ class App extends React.Component {
         arrayOfChopedIds.push(this.getIds(25, 49));
         arrayOfChopedIds.push(this.getIds(50, 74));
         arrayOfChopedIds.push(this.getIds(75, 100));
+        // selecting the next API key 
+        key = keys[keyIndex]
+        keyIndex++;
+        if(keyIndex+1> keys.length){
+          keyIndex = 0;         
+        }
+
+
         const URIs = arrayOfChopedIds.map(subarr => {
           const ids = subarr.toString();
           if (this.state.firstTime) {
             return encodeURI(
               `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${
-                this.state.APIKey
+                key
               }`
             );
           } else {
             return encodeURI(
               `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ids}&key=${
-                this.state.APIKey
+               key
               }`
             );
           }
