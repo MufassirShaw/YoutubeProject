@@ -16,9 +16,9 @@ const styles = theme => ({
   },
   cardMediaRoot: {
     margin: "0 auto",
-    backgroundSize: "cover",
-    width: "100%",
-    height: "100%"
+    backgroundSize: "100%",
+    width: "50px",
+    height: "50px"
   },
 
   media: {},
@@ -64,8 +64,73 @@ class ChannelCard extends React.Component {
               container
               direction="row"
               justify="space-between"
-              alignItems="stretch"
+              alignItems="center"
             >
+              <Grid item xs={9}>
+                <Grid
+                  container
+                  direction="row"
+                  justify="space-between"
+                  alignItems="center"
+                >
+                  <Grid item xs={2}>
+                    <Typography
+                      align="center"
+                      gutterBottom
+                      classes={{
+                        root: classes.typoRoot
+                      }}
+                    >
+                      <em
+                        style={{
+                          paddingRight: "5px",
+                          fontFamily:"Concert one",
+                          fontSize: "24px",
+                          fontWeight:"bolder"
+                        }}
+                      >
+                        {no+"."}
+                      </em>
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <Typography
+                      component="h5"
+                      variant="h5"
+                      noWrap={true}
+                      align="center"
+                      classes={{
+                        root: classes.typoRoot
+                      }}
+                      style={{
+                        fontSize:"20px",
+                        // fontFamily:"Concert one",
+                        fontWeight:"bolder"
+
+                      }}
+                    >
+                      {snippet.title}
+                    </Typography>
+                    <Typography
+                      classes={{
+                        root: classes.typoRoot
+                      }}
+                      style={{
+                        fontSize:"18px",
+                      }}
+                      align="center"
+                      variant="h6"
+                    >
+                      <Odometer
+                        style={{ width: "100%" }}
+                        value={subCount}
+                        format="(,ddd)"
+                      />
+                    </Typography>
+                  </Grid>
+                </Grid>
+              </Grid>
+
               <Grid item xs={3}>
                 <CardMedia
                   component="div"
@@ -75,44 +140,6 @@ class ChannelCard extends React.Component {
                   }}
                   image={snippet.thumbnails.default.url}
                 />
-              </Grid>
-
-              <Grid item xs={9}>
-                <Typography
-                  component="h5"
-                  variant="h6"
-                  noWrap={true}
-                  align="center"
-                  gutterBottom
-                  classes={{
-                    root: classes.typoRoot
-                  }}
-                >
-                  <em
-                    style={{
-                      color: "red",
-                      marginRight: "10px",
-                      fontSize: "16px"
-                    }}
-                  >
-                    {no}:
-                  </em>
-                  {snippet.title}
-                </Typography>
-
-                <Typography
-                  classes={{
-                    root: classes.typoRoot
-                  }}
-                  align="center"
-                  variant="h6"
-                >
-                  <Odometer
-                    style={{ width: "100%" }}
-                    value={subCount}
-                    format="(,ddd)"
-                  />
-                </Typography>
               </Grid>
             </Grid>
           </CardActionArea>
