@@ -5,6 +5,10 @@ import axios from "axios";
 import "./styles.css";
 import { interval } from "rxjs";
 import { startWith, map, switchMap } from "rxjs/operators";
+
+const TIME_BT_ACTUAL_CALLS = 60000,
+  NO_OF_FAKE_CALLS = 10; /*@ MUST NOT be greater then the acutal call@*/
+
 class App extends React.Component {
   state = {
     channelIds: [
@@ -109,13 +113,9 @@ class App extends React.Component {
       "UCYzPXprvl5Y-Sf0g4vX-m6g",
       "UCZJ7m7EnCNodqnu5SAtg8eQ"
     ],
-   res: null,
+    res: null,
     firstTime: true,
-    keys:[
-      "AIzaSyCVPfbZQqM5tRrEapbizuX3Hi_ZZ5JUq5I",
-      "AIzaSyAohUKGFdY7mUO0GYRwdJN6yBXnDbrw0oQ",
-      "AIzaSyAWUmoQVXbXjFkhtOL7XY7hh--5yFThc5s"
-    ]
+    keys: ["AIzaSyDree1ADrW81eZxGYZ02FuJCixbBTRwgas"]
   };
   // 0 index based   inclusive start and end
   getIds = (start, end) => {
@@ -125,40 +125,42 @@ class App extends React.Component {
     return arr1;
   };
 
-
   fetchDataStream = () => {
     let keyIndex = 0,
-        {keys} = this.state,
-        key;
-    return interval(20000).pipe(
+      { keys } = this.state,
+      key,
+      fakeInt = null;
+
+    return interval(TIME_BT_ACTUAL_CALLS).pipe(
       startWith(0),
       switchMap(() => {
+        //clear the fake interval first
+
+        if (fakeInt) {
+          clearInterval(fakeInt);
+        }
+
         const arrayOfChopedIds = [];
         arrayOfChopedIds.push(this.getIds(0, 24));
         arrayOfChopedIds.push(this.getIds(25, 49));
         arrayOfChopedIds.push(this.getIds(50, 74));
         arrayOfChopedIds.push(this.getIds(75, 100));
-        // selecting the next API key 
-        key = keys[keyIndex]
+        // selecting the next API key
+        key = keys[keyIndex];
         keyIndex++;
-        if(keyIndex+1> keys.length){
-          keyIndex = 0;         
+        if (keyIndex + 1 > keys.length) {
+          keyIndex = 0;
         }
-
 
         const URIs = arrayOfChopedIds.map(subarr => {
           const ids = subarr.toString();
           if (this.state.firstTime) {
             return encodeURI(
-              `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${
-                key
-              }`
+              `https://www.googleapis.com/youtube/v3/channels?part=snippet,statistics&id=${ids}&key=${key}`
             );
           } else {
             return encodeURI(
-              `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ids}&key=${
-               key
-              }`
+              `https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${ids}&key=${key}`
             );
           }
         });
@@ -175,6 +177,7 @@ class App extends React.Component {
                 data.push(subItem);
               });
             });
+
             return data;
           })
           .catch(e => {
@@ -188,9 +191,11 @@ class App extends React.Component {
             return {
               id: i.id,
               snippet: i.snippet,
-              subCount: i.statistics.subscriberCount
+              subCount: i.statistics.subscriberCount,
+              fakeSubCount: i.statistics.subscriberCount
             };
           });
+
           this.setState({ firstTime: false });
         } else {
           unsortedRes = res.map(i => {
@@ -198,25 +203,78 @@ class App extends React.Component {
               return item.id === i.id ? item : false;
             });
 
+            // Caculate DIFF Rate channel increase/ TIME_BT_Actual_CALLS
+            let diff = Math.abs(
+              i.statistics.subscriberCount - matchedItem.subCount
+            );
+            let actuallTimeInSecs = TIME_BT_ACTUAL_CALLS / 1000;
+            diff = parseInt(diff / actuallTimeInSecs);
+
             const newItem = {
               id: matchedItem.id,
               snippet: matchedItem.snippet,
-              subCount: i.statistics.subscriberCount
+              subCount: i.statistics.subscriberCount,
+              fakeSubCount: i.statistics.subscriberCount,
+              diff
             };
             return newItem;
           });
         }
 
         const sortedRes = unsortedRes.sort((a, b) => {
-          return b.subCount - a.subCount;
+          return b.fakeSubCount - a.fakeSubCount;
         });
+
         this.setState({
           res: sortedRes
         });
 
+        fakeInt = this.setFakeInterval();
+
         return sortedRes;
       })
     );
+  };
+
+  getRndInteger = (min, max) => {
+    return Math.floor(Math.random() * (max - min)) + min;
+  };
+
+  setFakeInterval = () => {
+    let TIME_BT_FAKE_CALLS = parseInt(TIME_BT_ACTUAL_CALLS / (NO_OF_FAKE_CALLS));
+    return setInterval(() => {
+      let fakeCountRes = this.state.res;
+      let fakeSub;
+
+      let newArray = fakeCountRes.map((i, count) => {
+        // if we haven't calcuated the difference b/w the @pre values then add random numbers to fake subcount
+
+        if (i.diff !== null && i.diff !== undefined) {
+          
+          fakeSub = parseInt(i.fakeSubCount) + parseInt(i.diff);
+
+
+        }else{
+
+         fakeSub =
+          parseInt(i.fakeSubCount) + parseInt(this.getRndInteger(-5, 5));
+
+        }
+        return {
+          ...i,
+          fakeSubCount: fakeSub
+        };
+      });
+
+      newArray = newArray.sort((a, b) => {
+        return b.fakeSubCount - a.fakeSubCount;
+      });
+
+      this.setState({
+        res: newArray
+      });
+
+    }, TIME_BT_FAKE_CALLS);
   };
 
   componentWillMount() {

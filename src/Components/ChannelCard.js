@@ -43,7 +43,7 @@ class ChannelCard extends React.Component {
 
   render() {
     const { classes, no } = this.props;
-    const { subCount, snippet } = this.props.channel;
+    const { fakeSubCount, snippet } = this.props.channel;
     return (
       <Grid
         item
@@ -109,7 +109,7 @@ class ChannelCard extends React.Component {
                 >
                   <Odometer
                     style={{ width: "100%" }}
-                    value={subCount}
+                    value={fakeSubCount}
                     format="(,ddd)"
                   />
                 </Typography>
