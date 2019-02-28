@@ -47,71 +47,71 @@ class App extends React.Component {
       "UCaWd5_7JhbQBe4dknZhsHJg",
       "UCb2HGwORFBo94DmRx4oLzow",
       "UCbCmjCuTUZos6Inko4u57UQ",
-      "UCBNs31xysxpAGMheg8OrngA",
-      "UCBnZ16ahKA2DZ_T5W0FPUXg",
-      "UCbTVTephX30ZhQF5zwFppBg",
-      "UCBVjMGOIkavEAhyqpxJ73Dw",
-      "UCbW18JZRgko_mOGm5er8Yzg",
-      "UCcgqSM4YEo5vVQpqwN-MaNw",
-      "UCECJDeK0MNapZbpaOzxrUPA",
-      "UCEdvpU2pFRCVqU6yIPyTpMQ",
-      "UCFFbwnve3yF62-tVXkTyHqg",
-      "UCffDXn7ycAzwL2LDlbyWOTw",
-      "UCfM3zsQsOnfWNUppiycmBuw",
-      "UCG8rbF3g2AMX70yOd8vqIZg",
-      "UCGnjeahCJW1AF34HBmQTJ-Q",
-      "UChGJGhZ9SOOHvBB0Y4DOO_w",
-      "UCHkj014U2CQ2Nv0UZeYpE_A",
-      "UCIwFjwMjI0y7PDBVEO9-bkQ",
-      "UCj0O6W8yDuLg3iraAXKgCrQ",
-      "UCJ0uqCI0Vqr2Rrt1HseGirg",
-      "UCJ5v_MCY6GNUBTO8-D3XoAg",
-      "UCjIA3wwhi0QjSOXAZwOXbPA",
-      "UCJrOtniJ0-NWz37R30urifQ",
-      "UCK1i2UviaXLUNrZlAFpw_jA",
-      "UCKqH_9mk1waLgBiL2vT5b9g",
-      "UCKqx9r4mrFglauNBJc1L_eg",
-      "UCLp8RBhQHu9wSsq62j_Md6A",
-      "UClZkHt2kNIgyrTTPnSQV3SA",
-      "UClZuKq2m0Qu-HkopkSBLpEw",
-      "UCNUQK9mQoqi4yNXw2_Rj6SA",
-      "UCoGDh1Xa3kUCpok24JN5DKA",
-      "UCOpNcN46UbXVtpKMrmU4Abg",
-      "UCOsyDsO5tIt-VZ1iwjdQmew",
-      "UCoUM-UJ7rirJYP8CQ0EIaHA",
-      "UCp0hYYBW6IMayGgR-WeoCvQ",
-      "UCP6uH_XlsxrXwZQ4DlqbqPg",
-      "UCpDJl2EmP7Oh90Vylx0dZtA",
-      "UCpEhnqL0y41EpW2TvWAHD7Q",
-      "UCPHXtOVmjvbP9OJihsd7gCg",
-      "UCpko_-a4wgz2u_DgDgd9fqA",
-      "UCPNxhDvTcytIdvwXWAm43cA",
-      "UCppHT7SZKKvar4Oc9J4oljQ",
-      "UCq-Fj5jknLsUf-MWSy4_brA",
-      "UCqECaJ8Gagnn7YCbPEzWH6g",
-      "UCRijo3ddMTht_IHyNSNXpNQ",
-      "UCRv76wLBC73jiP7LX4C3l8Q",
-      "UCRx3mKNUdl8QE06nEug7p6Q",
-      "UCS5Oz6CHmeoF7vSad0qqXfw",
-      "UCSAUGyc_xA8uYzaIVG6MESQ",
-      "UCsPF3cApzCohxPp5oKdoWSQ",
-      "UCsRM0YB_dabtEPGPTKo-gcw",
-      "UCt-k6JwNWHMXDBGm9IYHdsg",
-      "UCuHzBCaKmtaLcRAOoazhCPA",
-      "UCV306eHqgo0LvBf3Mh36AHg",
-      "UCV4xOVpbcV8SdueDCOxLXtQ",
-      "UCV9_KinVpV-snHe3C3n1hvA",
-      "UCVtFOytbRpEvzLjvqGG5gxQ",
-      "UCXazgXDIYyWH-yXLAkcrFxw",
-      "UCxoq-PAQeAdk_zyg8YS0JqA",
-      "UCY30JRSgfhYXA6i6xX1erWg",
-      "UCYiGq8XF7YQD00x7wAd62Zg",
-      "UCYLNGLIzMhRTi6ZOLjAPSmw",
-      "UCyoXW-Dse7fURq30EWl_CUA",
-      "UCYvmuw-JtVrTZQ-7Y4kd63Q",
-      "UCYWOjHweP2V-8kGKmmAmQJQ",
-      "UCYzPXprvl5Y-Sf0g4vX-m6g",
-      "UCZJ7m7EnCNodqnu5SAtg8eQ"
+      // "UCBNs31xysxpAGMheg8OrngA",
+      // "UCBnZ16ahKA2DZ_T5W0FPUXg",
+      // "UCbTVTephX30ZhQF5zwFppBg",
+      // "UCBVjMGOIkavEAhyqpxJ73Dw",
+      // "UCbW18JZRgko_mOGm5er8Yzg",
+      // "UCcgqSM4YEo5vVQpqwN-MaNw",
+      // "UCECJDeK0MNapZbpaOzxrUPA",
+      // "UCEdvpU2pFRCVqU6yIPyTpMQ",
+      // "UCFFbwnve3yF62-tVXkTyHqg",
+      // "UCffDXn7ycAzwL2LDlbyWOTw",
+      // "UCfM3zsQsOnfWNUppiycmBuw",
+      // "UCG8rbF3g2AMX70yOd8vqIZg",
+      // "UCGnjeahCJW1AF34HBmQTJ-Q",
+      // "UChGJGhZ9SOOHvBB0Y4DOO_w",
+      // "UCHkj014U2CQ2Nv0UZeYpE_A",
+      // "UCIwFjwMjI0y7PDBVEO9-bkQ",
+      // "UCj0O6W8yDuLg3iraAXKgCrQ",
+      // "UCJ0uqCI0Vqr2Rrt1HseGirg",
+      // "UCJ5v_MCY6GNUBTO8-D3XoAg",
+      // "UCjIA3wwhi0QjSOXAZwOXbPA",
+      // "UCJrOtniJ0-NWz37R30urifQ",
+      // "UCK1i2UviaXLUNrZlAFpw_jA",
+      // "UCKqH_9mk1waLgBiL2vT5b9g",
+      // "UCKqx9r4mrFglauNBJc1L_eg",
+      // "UCLp8RBhQHu9wSsq62j_Md6A",
+      // "UClZkHt2kNIgyrTTPnSQV3SA",
+      // "UClZuKq2m0Qu-HkopkSBLpEw",
+      // "UCNUQK9mQoqi4yNXw2_Rj6SA",
+      // "UCoGDh1Xa3kUCpok24JN5DKA",
+      // "UCOpNcN46UbXVtpKMrmU4Abg",
+      // "UCOsyDsO5tIt-VZ1iwjdQmew",
+      // "UCoUM-UJ7rirJYP8CQ0EIaHA",
+      // "UCp0hYYBW6IMayGgR-WeoCvQ",
+      // "UCP6uH_XlsxrXwZQ4DlqbqPg",
+      // "UCpDJl2EmP7Oh90Vylx0dZtA",
+      // "UCpEhnqL0y41EpW2TvWAHD7Q",
+      // "UCPHXtOVmjvbP9OJihsd7gCg",
+      // "UCpko_-a4wgz2u_DgDgd9fqA",
+      // "UCPNxhDvTcytIdvwXWAm43cA",
+      // "UCppHT7SZKKvar4Oc9J4oljQ",
+      // "UCq-Fj5jknLsUf-MWSy4_brA",
+      // "UCqECaJ8Gagnn7YCbPEzWH6g",
+      // "UCRijo3ddMTht_IHyNSNXpNQ",
+      // "UCRv76wLBC73jiP7LX4C3l8Q",
+      // "UCRx3mKNUdl8QE06nEug7p6Q",
+      // "UCS5Oz6CHmeoF7vSad0qqXfw",
+      // "UCSAUGyc_xA8uYzaIVG6MESQ",
+      // "UCsPF3cApzCohxPp5oKdoWSQ",
+      // "UCsRM0YB_dabtEPGPTKo-gcw",
+      // "UCt-k6JwNWHMXDBGm9IYHdsg",
+      // "UCuHzBCaKmtaLcRAOoazhCPA",
+      // "UCV306eHqgo0LvBf3Mh36AHg",
+      // "UCV4xOVpbcV8SdueDCOxLXtQ",
+      // "UCV9_KinVpV-snHe3C3n1hvA",
+      // "UCVtFOytbRpEvzLjvqGG5gxQ",
+      // "UCXazgXDIYyWH-yXLAkcrFxw",
+      // "UCxoq-PAQeAdk_zyg8YS0JqA",
+      // "UCY30JRSgfhYXA6i6xX1erWg",
+      // "UCYiGq8XF7YQD00x7wAd62Zg",
+      // "UCYLNGLIzMhRTi6ZOLjAPSmw",
+      // "UCyoXW-Dse7fURq30EWl_CUA",
+      // "UCYvmuw-JtVrTZQ-7Y4kd63Q",
+      // "UCYWOjHweP2V-8kGKmmAmQJQ",
+      // "UCYzPXprvl5Y-Sf0g4vX-m6g",
+      // "UCZJ7m7EnCNodqnu5SAtg8eQ"
     ],
     res: null,
     firstTime: true,
@@ -192,7 +192,8 @@ class App extends React.Component {
               id: i.id,
               snippet: i.snippet,
               subCount: i.statistics.subscriberCount,
-              fakeSubCount: i.statistics.subscriberCount
+              fakeSubCount: i.statistics.subscriberCount,
+              diff: 0            
             };
           });
 
@@ -208,7 +209,7 @@ class App extends React.Component {
               i.statistics.subscriberCount - matchedItem.subCount
             );
             let actuallTimeInSecs = TIME_BT_ACTUAL_CALLS / 1000;
-            diff = parseInt(diff / actuallTimeInSecs);
+            diff = parseFloat(diff / actuallTimeInSecs);
 
             const newItem = {
               id: matchedItem.id,
@@ -236,30 +237,17 @@ class App extends React.Component {
     );
   };
 
-  getRndInteger = (min, max) => {
-    return Math.floor(Math.random() * (max - min)) + min;
-  };
-
   setFakeInterval = () => {
     let TIME_BT_FAKE_CALLS = parseInt(TIME_BT_ACTUAL_CALLS / (NO_OF_FAKE_CALLS));
     return setInterval(() => {
       let fakeCountRes = this.state.res;
-      let fakeSub;
 
-      let newArray = fakeCountRes.map((i, count) => {
+      let newArray = fakeCountRes.map((i) => {
         // if we haven't calcuated the difference b/w the @pre values then add random numbers to fake subcount
-
-        if (i.diff !== null && i.diff !== undefined) {
           
-          fakeSub = parseInt(i.fakeSubCount) + parseInt(i.diff);
+        let fakeSub = parseFloat(i.fakeSubCount) + parseFloat(i.diff);
 
 
-        }else{
-
-         fakeSub =
-          parseInt(i.fakeSubCount) + parseInt(this.getRndInteger(-5, 5));
-
-        }
         return {
           ...i,
           fakeSubCount: fakeSub

@@ -109,7 +109,7 @@ class ChannelCard extends React.Component {
                 >
                   <Odometer
                     style={{ width: "100%" }}
-                    value={fakeSubCount}
+                    value={ parseFloat(fakeSubCount)}
                     format="(,ddd)"
                   />
                 </Typography>
