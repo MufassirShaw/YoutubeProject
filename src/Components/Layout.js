@@ -15,7 +15,7 @@ const Layout = props => {
   const { data, classes } = props;
   if (data) {
     const renderedCards = data.map((item, i) => {
-      return <ChannelCard key={i} no={i + 1} channel={item} />;
+      return <ChannelCard key={i} no={i + 101} channel={item} />;
     });
     return <Grid container>{renderedCards}</Grid>;
   } else {
